@@ -32,6 +32,9 @@
         </div>
     </div>
 
+    <div class="container">
+        <!-- <a href="" class="btn btn-success">Create Category</a> -->
+    </div>
 
 
 </x-app-layout>

@@ -54,17 +54,7 @@ class UserController extends Controller
      */
     public function update($id)
     {
-        // $user = User::find($id) ;
-        // if($user){
-        //     if($user->active){
-        //         $user->active = 0 ;
-        //     }
-        //     else{
-        //         $user->active = 1 ;
-        //     }
-        //     $user->update() ;
-        // }
-        // return back() ;
+       //
     }
 
     /**

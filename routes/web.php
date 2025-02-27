@@ -54,6 +54,8 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::post('/users/search',[AdminController::class,'showUsers'])->name('admin.user.search');
 
     Route::get('/admin/products/categories',[CategoryController::class,'index'])->name('admin.products.category');
+
+    Route::post('/admin/categories' , [CategoryController::class , 'create'])->name('admin.categories') ;
 });
 
 //user routes

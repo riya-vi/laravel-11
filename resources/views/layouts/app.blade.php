@@ -43,11 +43,11 @@
                 <div class="col-2 mt-5px order-1"><i class="material-icons" style="font-size:25px;color:white"></i></div>
             </div>
             <div class="row">
-                <div class="col-5 mt-5px order-2"><a href="{{route('admin.products.category')}}" class="text-white d-block py-2">products Category</a></div>
+                <div class="col-5 mt-5px order-2"><a href="{{route('admin.products.category')}}" class="text-white d-block py-2">Product Categories</a></div>
                 <div class="col-2 mt-5px order-1"><i class='fas fa-box-open' style='font-size:48px;color:white'></i></div>
             </div>
             <div class="row">
-                <div class="col-5 mt-5px order-2"><a href="{{route('admin.products')}}" class="text-white d-block py-2">products</a></div>
+                <div class="col-5 mt-5px order-2"><a href="{{route('admin.products')}}" class="text-white d-block py-2">Products</a></div>
                 <div class="col-2 mt-5px order-1"><i class='fas fa-box-open' style='font-size:48px;color:white'></i></div>
             </div>
             <div class="row">
@@ -108,7 +108,6 @@
             </ul>
         </div>
         @endif
-
         <!-- Main Content -->
         <div class="flex-grow-1">
             <div class="min-h-screen bg-gray-100">

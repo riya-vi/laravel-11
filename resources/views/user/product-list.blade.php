@@ -99,7 +99,8 @@
                         @csrf
                         @method("PUT")
                         <div class="mb-3">
-                            <img src="{{$product->image}}" alt="{{$product->name}}" class="rounded mx-auto d-block" width="100">
+                          {{-- 
+                            <img src="{{$product->image}}" alt="{{$product->name}}" class="rounded mx-auto d-block" width="100"> --}}
                         </div>
                         <div class="mb-3">
                             <label for="name" data-bs-dismiss="modal" class="col-form-label">Product Name:</label>

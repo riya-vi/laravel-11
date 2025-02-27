@@ -98,11 +98,9 @@ class ProductController extends Controller
 
     public function showOwnProducts()
     {
-        // $products = Product::where('user_id', Auth::id())->orderBy('created_at', 'desc')->paginate(3);
+        $products = Product::where('user_id', Auth::id())->orderBy('created_at', 'desc')->paginate(3);
 
-        $products = Product::where('user_id', Auth::id())->orderBy('created_at', 'desc')->toArray();
-
-        
+        // $products = Product::where('user_id', Auth::id())->orderBy('created_at', 'desc')->toArray();
 
         return view('user.product-list')->with('products',$products);
     }

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
+use App\Models\Product;
 use Illuminate\Http\Request;
 
 class CategoryController extends Controller
@@ -21,7 +22,10 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        //
+        $category = Category::find(1) ;
+        $category->products()->attach([1,2,3]) ;
+        $categories = Category::with('products')->get() ;
+        return $categories ;
     }
 
     /**

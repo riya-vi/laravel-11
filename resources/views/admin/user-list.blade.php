@@ -5,16 +5,6 @@
         </h2>
     </x-slot>
 
-    <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="p-6 text-gray-900">
-                    {{ __("You're logged in!") }}
-                </div>
-            </div>
-        </div>
-    </div>
-
     <div class="container">
         <div class="card mt-5 px-10">
             <h2 class="card-header p-3"><i class="fa fa-star"></i> List of Products</h2>
@@ -24,7 +14,7 @@
                         <th colspan="8">
                             <form action="" method="post">
                                 <input type="text" name="search" id="search" placeholder="Search..">
-                            </form>
+                            </form> 
                         </th>
                     </tr>
                     <tr>
@@ -58,41 +48,3 @@
     </div>
 
 </x-app-layout>
-
-<script>
-    $('#search').on('keyup', function() {
-        search();
-    });
-    search();
-
-    function search() {
-        var keyword = $('#search').val();
-        $.post('{{ route("admin.user.search") }}', {
-                _token: $('meta[name="csrf-token"]').attr('content'),
-                keyword: keyword
-            },
-            function(data) {
-                table_post_row(data);
-                console.log(data);
-            });
-    }
-    // table row with ajax
-    function table_post_row(res) {
-        let htmlView = '';
-        if (res.users.length <= 0) {
-            htmlView += `
-       <tr>
-          <td colspan="4">No data.</td>
-      </tr>`;
-        }
-        for (let i = 0; i < res.users.length; i++) {
-            htmlView += `
-        <tr>
-           <td>` + (i + 1) + `</td>
-              <td>` + res.users[i].name + `</td>
-               <td>` + res.users[i].email + `</td>
-        </tr>`;
-        }
-        $('tbody').html(htmlView);
-    }
-</script>

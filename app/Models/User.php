@@ -6,6 +6,9 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Database\Eloquent\Builder;
+
+
 
 class User extends Authenticatable
 {
@@ -21,7 +24,8 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
-        
+        'role',
+        'active'
     ];
 
     /**
@@ -49,18 +53,22 @@ class User extends Authenticatable
         ];
     }
 
-    // public function products(){
-    //     return $this->hasMany(Product::class) ;
+    public function products(){
+        return $this->hasMany(Product::class) ;
 
-    //     // return $this->hasMany(Product::class)->chaperone() ;
-    //     // eager loading
-    // }
-}
-    // $users = User::all();
-    // $users = User::where('status',1)->get();
-    // $users = User::where('status',1)->get()->toArray();
-    // $users = User::find($id);
+        // return $this->hasMany(Product::class)->chaperone() ;
+        // eager loading
+    }
 
-    // $user = User::all();
-    // return $user ;
+    public function scopeActive(Builder $query): void
+    {
+        $query->where('active', 1);
+    }
     
+    public function scopeOfType(Builder $query, string $type): void {
+        $query->where('role' , $type) ;
+    }
+
+
+}
+   

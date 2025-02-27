@@ -21,4 +21,8 @@ class Product extends Model
             'name' => 'user name' ,
         ]) ;
     }
+
+    public function categories(){
+        return $this->belongsToMany(Category::class) ;
+    }
 }
