@@ -73,7 +73,7 @@
             </div>
 
         </div>
-    {{ $products->links() }}
+        {{ $products->links() }}
     </div>
 
     <!-- Edit Product modal -->
@@ -129,7 +129,7 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="modal-title"> Add New Product</h5>
+                    <h5 class="modal-title" id="modal-title"> + Add New Product</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
@@ -144,17 +144,19 @@
                             <label for="name">Product Name: </label>
                             <input type="text" name="name" id="name" class="form-control" />
                         </div>
-                        {{--  
-                            <div class="form-group">
-                            <label for="category">Category: </label>
-                            @foreach($categories as $category)
-                            <select name="category" id="category">
-                                <option value="{{$category->name}}"></option>
+
+                        <div class="form-group">
+                            <label for="categories">Category: </label>
+                            <select name="categories"  id="categories" multiple>
+                                <option value=""> Select Category </option>
+                                @foreach($categories as $category)
+                                <option value="{{$category->id}}">
+                                    {{$category->name}}
+                                </option>
+                                @endforeach
                             </select>
-                            @endforeach
                         </div>
-                            --}}
-                        
+
                         <div class="form-group ">
                             <label for="quantity">Quantity: </label>
                             <input type="number" name="quantity" id="quantity" class="form-control" />

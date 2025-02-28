@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Product;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -10,14 +11,26 @@ class AdminController extends Controller
 {
     public function dashboard()
     {
-        // $totalUsers = User::get()->count() ;
+        // $totalUsers = User::get()->count() ; 
+
         // $totalUsers = DB::table('users')->get() ;
         // $totalUsers = User::get() ;
 
         $totalUsers = User::count() ;
 
         $totalProducts = DB::table('products')->get() ;
-        return view('admin.dashboard', compact('totalUsers','totalProducts'));
+       
+        // $users = DB::table('users')->select('users.name') ;
+        // $products = DB::table('products')->select('products.name')->union($users)->get() ;
+
+        // return $products ;
+        // dd($products) ;
+
+         return view('admin.dashboard', compact('totalUsers','totalProducts'));
+
+       
+
+        
     }
 
     public function showUsers()
@@ -40,7 +53,6 @@ class AdminController extends Controller
         //     ];
         //     return view('dashboard')->with($data) ;
     }
-
 
     public function update(Request $request, $id)
     {

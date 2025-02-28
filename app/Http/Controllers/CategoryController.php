@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Http\Request;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 
 class CategoryController extends Controller
 {
@@ -13,8 +14,12 @@ class CategoryController extends Controller
      */
     public function index()
     {
-       $categories = Category::get() ;
+       $categories = Category::all() ;
+        //   $categories = Category::all()->where('name', 'clothes') ;
+
        return view('products.category', compact('categories'));
+
+
     }
 
     /**
@@ -22,10 +27,13 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        $category = Category::find(1) ;
-        $category->products()->attach([1,2,3]) ;
-        $categories = Category::with('products')->get() ;
-        return $categories ;
+        // $category = Category::find(1) ;
+        // $category->products()->attach([1,2,3]) ;
+        // $categories = Category::with('products')->get() ;
+        // return $categories ;
+
+        return view('products.create-category') ;
+   
     }
 
     /**
@@ -33,7 +41,12 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        $book = Category::create();
+
+        Category::create([
+            'name' => $request->input('name')
+        ]) ;
+        return redirect()->route('admin.products.category')->with('success', 'Category Created Successfully !');
+
     }
 
     /**
@@ -47,9 +60,9 @@ class CategoryController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit()
     {
-        //
+        
     }
 
     /**
@@ -63,8 +76,10 @@ class CategoryController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Category $category): RedirectResponse 
     {
-        //
+        $category->delete() ;   
+
+        return back()->with('success' , 'Category Deleted Successfuly !') ;
     }
 }
